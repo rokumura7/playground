@@ -7,20 +7,16 @@ public class Judge {
       System.out.println("\nRound " + i);
       Player winner = judgeJanken(p1, p2);
       if (winner != null) {
-        winner.notifyResult(true);
+        winner.addWinCount();
         System.out.println(winner.getName() + " won.");
       } else {
         System.out.println("draw");
       }
     }
 
-    System.out.println("------------------");
-    System.out.println(p1.getName() + ":" + p1.getWinCount());
-    System.out.println(p2.getName() + ":" + p2.getWinCount());
-    if (p1.getWinCount() > p2.getWinCount()) {
-      System.out.println(p1.getName() + " won.");
-    } else if (p2.getWinCount() > p1.getWinCount()) {
-      System.out.println(p2.getName() + " won.");
+    Player winner = judgeResult(p1, p2);
+    if (winner != null) {
+      System.out.println(winner.getName() + " won.");
     } else {
       System.out.println("draw");
     }
@@ -46,5 +42,18 @@ public class Judge {
       return p2;
     }
     return null;
+  }
+
+  private Player judgeResult(Player p1, Player p2) {
+    System.out.println("------------------");
+    System.out.println(p1.getName() + ":" + p1.getWinCount());
+    System.out.println(p2.getName() + ":" + p2.getWinCount());
+    if (p1.getWinCount() > p2.getWinCount()) {
+      return p1;
+    } else if (p2.getWinCount() > p1.getWinCount()) {
+      return p2;
+    } else {
+      return null;
+    }
   }
 }

@@ -18,10 +18,8 @@ public class Player {
     return tactics.readTactics();
   }
 
-  public void notifyResult(boolean isWin) {
-    if (isWin) {
-      winCount++;
-    }
+  public void addWinCount() {
+    winCount++;
   }
 
   public int getWinCount() {
