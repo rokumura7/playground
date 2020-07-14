@@ -2,10 +2,12 @@ package com.rokumura;
 
 public class Player {
   private String name;
+  private Tactics tactics;
   private int winCount;
 
-  public Player(String name) {
+  public Player(String name, Tactics tactics) {
     this.name = name;
+    this.tactics = tactics;
   }
 
   public String getName() {
@@ -13,14 +15,7 @@ public class Player {
   }
 
   public Hands showHand() {
-    double randomNum = Math.random() * 3;
-    if (randomNum < 1) {
-      return Hands.STONE;
-    } else if (randomNum < 2) {
-      return Hands.SCISSORS;
-    } else {
-      return Hands.PAPER;
-    }
+    return tactics.readTactics();
   }
 
   public void notifyResult(boolean isWin) {
