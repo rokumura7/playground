@@ -4,6 +4,7 @@ public class Player {
   private String name;
   private Tactics tactics;
   private int winCount;
+  private Hands hand;
 
   public Player(String name, Tactics tactics) {
     this.name = name;
@@ -14,8 +15,12 @@ public class Player {
     return name;
   }
 
+  public void decideHand() {
+    hand = tactics.readTactics();
+  }
+
   public Hands showHand() {
-    return tactics.readTactics();
+    return hand;
   }
 
   public void addWinCount() {
@@ -24,5 +29,10 @@ public class Player {
 
   public int getWinCount() {
     return winCount;
+  }
+
+  @Override
+  public String toString() {
+    return name;
   }
 }
