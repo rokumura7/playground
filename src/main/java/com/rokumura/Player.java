@@ -3,17 +3,20 @@ package com.rokumura;
 import java.util.*;
 
 public class Player {
-  private String name;
-  private boolean isParent;
-  private Hand hand;
+  protected String name;
+  protected Hand hand;
 
   public Player(String name) {
     this.name = name;
   }
 
+  public void addCard(Card card) {
+    hand.addCard(card);
+  }
+
   public void draw(Player nextPlayer) {
     Card card = nextPlayer.holdOutCard();
-    hand.addCard(card);
+    addCard(card);
   }
 
   public Card holdOutCard() {
@@ -31,6 +34,6 @@ public class Player {
 
   @Override
   public String toString() {
-    return name + (isParent ? "[PARENT]" : "");
+    return name;
   }
 }
