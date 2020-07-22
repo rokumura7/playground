@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Player {
   protected String name;
-  protected Hand hand;
+  protected Hand hand = new Hand();
 
   public Player(String name) {
     this.name = name;
