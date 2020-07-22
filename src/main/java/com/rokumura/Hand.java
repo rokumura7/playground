@@ -1,6 +1,7 @@
 package com.rokumura;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Hand {
   private List<Card> cards = new ArrayList<>();
@@ -11,6 +12,10 @@ public class Hand {
 
   public Card pickCard(int index) {
     return cards.remove(index);
+  }
+
+  public boolean pick(Card card) {
+    return cards.remove(card);
   }
 
   public void shuffleCards() {
@@ -26,21 +31,21 @@ public class Hand {
 
   public List<Card> findDuplicateNumberCards() {
     List<Card> result = new ArrayList<>();
-    if (cards.size() > 0) {
-      Card lastAddedCard = cards.get(cards.size() - 1);
-      cards.stream()
-        .filter(c -> c.getNumber() == lastAddedCard.getNumber())
-        .findFirst()
-        .ifPresent(c -> {
-          result.add(c);
-          result.add(lastAddedCard);
-        });
+    for (int i = 0; i < cards.size(); i++) {
+      Card c1 = cards.get(i);
+      for (int j = i + 1; j < cards.size(); j++) {
+        Card c2 = cards.get(j);
+        if (c1.getNumber() == c2.getNumber()) {
+          result.add(c1);
+          result.add(c2);
+        }
+      }
     }
     return result;
   }
 
   @Override
   public String toString() {
-    return cards.stream().map(c -> c + ",").toString();
+    return cards.stream().map(c -> c + ",").collect(Collectors.joining());
   }
 }

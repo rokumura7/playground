@@ -26,6 +26,7 @@ public class ParentPlayer extends Player {
       deck.addCard(new Card(Suit.CLUB, i));
     });
     deck.addCard(new Card(Suit.JOKER, 0));
+    deck.shuffleCards();
     return deck;
   }
 
