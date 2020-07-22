@@ -5,17 +5,9 @@ import java.util.*;
 public class App {
   public static void main( String[] args ){
     System.out.println("PREPARE.");
-    Table table = new Table();
     ParentPlayer parent = new ParentPlayer("Parent");
-    Player playerA = new Player("Player A");
-    Player playerB = new Player("Player B");
-    Player playerC = new Player("Player C");
-
-    List<Player> players = new ArrayList<>();
-    players.add(parent);
-    players.add(playerA);
-    players.add(playerB);
-    players.add(playerC);
+    List<Player> players = recruitPlayers(parent);
+    if (players.size() == 1) throw new RuntimeException("Nobody joined...");
 
     Hand deck = parent.prepareDeck();
     System.out.println(deck);
@@ -29,7 +21,11 @@ public class App {
       player.throwAwayDuplicateCards();
       System.out.println(player.showHand());
     });
+    startGame(players);
+  }
 
+  private static void startGame(List<Player> players) {
+    Table table = new Table();
     System.out.println("======================");
     System.out.println("START");
     for (int i = 0; players.size() > 1; i++) {
@@ -40,9 +36,7 @@ public class App {
       if (nextPlayer.declareWin()) {
         players.remove(nextPlayer);
       }
-      if (players.size() == 1) {
-        Player loser = players.get(0);
-        System.out.println(loser + " lose");
+      if (isFinish(players)) {
         break;
       }
       List<Card> duplicateCards = currentPlayer.throwAwayDuplicateCards();
@@ -50,12 +44,28 @@ public class App {
       if (currentPlayer.declareWin()) {
         players.remove(currentPlayer);
       }
-      if (players.size() == 1) {
-        Player loser = players.get(0);
-        System.out.println(loser + " lose");
+      if (isFinish(players)) {
         break;
       }
     }
     System.out.println("END.");
+  }
+
+  private static boolean isFinish(List<Player> players) {
+    if (players.size() == 1) {
+      Player loser = players.get(0);
+      System.out.println(loser + " lose");
+      return true;
+    }
+    return false;
+  }
+
+  private static List<Player> recruitPlayers(Player parent) {
+    List<Player> players = new ArrayList<>();
+    players.add(parent);
+    players.add(new Player("player 1"));
+    players.add(new Player("player 2"));
+    players.add(new Player("player 3"));
+    return players;
   }
 }

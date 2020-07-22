@@ -31,16 +31,32 @@ public class Hand {
 
   public List<Card> findDuplicateNumberCards() {
     List<Card> result = new ArrayList<>();
-    for (int i = 0; i < cards.size(); i++) {
-      Card c1 = cards.get(i);
-      for (int j = i + 1; j < cards.size(); j++) {
-        Card c2 = cards.get(j);
-        if (c1.getNumber() == c2.getNumber()) {
-          result.add(c1);
-          result.add(c2);
-        }
+    List<Card> copy = cards.stream().collect(Collectors.toList());
+    for (int i = 0; i < copy.size();) {
+      Card card = copy.get(i);
+      List<Card> duplicates = findDuplicateNumberCards(card, copy);
+      if (duplicates.size() > 0) {
+        duplicates.stream().forEach(c -> {
+          copy.remove(c);
+          result.add(c);
+        });
+        continue;
       }
+      i++;
     }
+    return result;
+  }
+
+  private List<Card> findDuplicateNumberCards(Card card, List<Card> cards) {
+    List<Card> result = new ArrayList<>();
+    cards.stream()
+      .filter(c -> c.getNumber() == card.getNumber())
+      .filter(c -> !c.equals(card))
+      .findFirst()
+      .ifPresent(c -> {
+        result.add(c);
+        result.add(card);
+    });
     return result;
   }
 
