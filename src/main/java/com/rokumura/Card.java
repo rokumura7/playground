@@ -51,4 +51,12 @@ public class Card {
     }
     return sb.toString();
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (this.getClass() != obj.getClass()) return false;
+    Card card = (Card)obj;
+    return this.suit.equals(card.suit) && this.number == card.number;
+  }
 }
