@@ -3,19 +3,14 @@ package com.rokumura;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-import org.hamcrest.collection.IsEmptyCollection;
-
-import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.Matchers.*;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
-import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 import org.junit.Test;
 
 import java.util.List;
-import java.util.Arrays;
 
 public class HandTest {
   @Test
