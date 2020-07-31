@@ -1,12 +1,21 @@
-package com.rokumura.core;
+package com.rokumura.card;
 
 public class Card {
+  public enum Suit {
+    SPADE, HEART, DIAMOND, CLUB, JOKER
+  }
+
   private Suit suit;
   private int number;
 
   public Card(Suit suit, int number) {
+    if (suit.equals(Suit.JOKER)) throw new RuntimeException("use generateJoker method.");
     this.suit = suit;
     this.number = number;
+  }
+
+  public Card generateJoker() {
+    return new Card(Suit.JOKER, 0);
   }
 
   public int getNumber() {

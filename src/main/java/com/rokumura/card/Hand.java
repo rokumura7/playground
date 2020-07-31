@@ -1,13 +1,35 @@
-package com.rokumura.oldMaid;
+package com.rokumura.card;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.rokumura.core.Card;
-import com.rokumura.core.Hand;
+public class Hand {
+  private List<Card> cards = new ArrayList<>();
 
-public class OldMaidHand extends Hand {
+  public void addCard(Card card) {
+    cards.add(card);
+  }
+
+  public Card pickCard(int index) {
+    return cards.remove(index);
+  }
+
+  public boolean pick(Card card) {
+    return cards.remove(card);
+  }
+
+  public void shuffleCards() {
+    for (int i = 0; i < cards.size() * 2; i++) {
+      Card pickedCard = pickCard((int)(Math.random() * cards.size()));
+      cards.add(pickedCard);
+    }
+  }
+
+  public int countCards() {
+    return cards.size();
+  }
+
   public List<Card> findDuplicateNumberCards() {
     List<Card> result = new ArrayList<>();
     List<Card> copy = cards.stream().collect(Collectors.toList());
@@ -37,5 +59,10 @@ public class OldMaidHand extends Hand {
         result.add(card);
     });
     return result;
+  }
+
+  @Override
+  public String toString() {
+    return cards.stream().map(c -> c + ",").collect(Collectors.joining());
   }
 }
