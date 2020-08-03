@@ -7,9 +7,9 @@ const puppeteer = require('puppeteer');
   const articles = await qiita.$$('div.tr-Item')
   for (let i = 1; i <= articles.length; i++) {
     const like = await page.$eval(`div.tr-Item:nth-child(${i}) .tr-Item_likeCount`, elm => elm.textContent)
-    console.log(like)
+    if (like < 100) continue
     const title = await page.$eval(`div.tr-Item:nth-child(${i}) .tr-Item_title`, elm => elm.textContent)
-    console.log(title)
+    console.log(`[${like}]${title}`)
   }
   await browser.close()
 })();
