@@ -4,13 +4,18 @@ const puppeteer = require('puppeteer');
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
   const qiita = await goto(page, 'https://qiita.com/')
-  const articles = await qiita.$$('div.tr-Item')
-  for (let i = 1; i <= articles.length; i++) {
-    const like = await page.$eval(`div.tr-Item:nth-child(${i}) .tr-Item_likeCount`, elm => elm.textContent)
-    if (like < 100) continue
-    const title = await page.$eval(`div.tr-Item:nth-child(${i}) .tr-Item_title`, elm => elm.textContent)
-    console.log(`[${like}]${title}`)
-  }
+  const articles = await qiita.$$eval('.tr-Item', tr => tr.map(elm => ({
+      likeCount: elm.querySelector('.tr-Item_likeCount').textContent,
+      title: elm.querySelector('.tr-Item_title').textContent
+  })))
+  console.log('--- articles with over 100 likes. ---')
+  articles.filter(article => article.likeCount >= 100)
+    .forEach(article => console.log(`[${article.likeCount}]  ${article.title}`))
+
+  console.log('--- sort by likes. ---')
+  articles.sort((a1, a2) => a2.likeCount - a1.likeCount)
+    .forEach(article => console.log(`[${article.likeCount}]  ${article.title}`))
+
   await browser.close()
 })();
 
