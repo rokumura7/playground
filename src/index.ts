@@ -2,12 +2,6 @@ import puppeteer from 'puppeteer'
 import { Page } from 'puppeteer'
 import Article from './article'
 
-const goto = async (page: Page, url: string): Promise<Page> => {
-  await page.goto(url)
-  await page.waitFor(1000)
-  return page
-}
-
 const showArticlesWithOver100Likes = (articles: Article[]): void => {
   articles
     .filter(article => article.likeCount >= 100)
@@ -20,18 +14,25 @@ const showArticlesSortByLikes = (articles: Article[]): void => {
     .forEach(article => console.log(`[${article.likeCount}]  ${article.title}`))
 }
 
+const fetchInnerText = async (page: Page, selector: string): Promise<string> => {
+  return page.$(selector).then(target => page.evaluate(elm => elm.innerText, target))
+}
+
 (async () => {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
-  const qiita = await goto(page, 'https://qiita.com/')
-  console.log(await qiita.title())
-  // TODO: (node:34230) UnhandledPromiseRejectionWarning: Error: Evaluation failed: ReferenceError: article_1 is not defined
-  const articles = await qiita.$$eval('.tr-Item', tr => tr.map(elm =>
-    new Article(
-      elm.querySelector('.tr-Item_likeCount')!.textContent,
-      elm.querySelector('.tr-Item_title')!.textContent
-    )
-  ))
+  await page.goto('https://qiita.com/')
+    .then(() => page.waitFor(1000))
+
+  const tr = await page.$$('.tr-Item')
+
+  const articles: Article[] = []
+  for (let i = 1; i <= tr.length; i++) {
+    const title = await fetchInnerText(page, `.tr-Item:nth-child(${i}) .tr-Item_title`)
+    const likeCount = await fetchInnerText(page, `.tr-Item:nth-child(${i}) .tr-Item_likeCount`)
+    articles.push(new Article(title, likeCount))
+  }
+
   console.log('--- articles with over 100 likes. ---')
   showArticlesWithOver100Likes(articles)
 
