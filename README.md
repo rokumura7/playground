@@ -2,6 +2,7 @@
 
 ## init
 
+Create Nuxt App.
 ```bash
 $ npx create-nuxt-app nuxt_todo
 
@@ -19,6 +20,17 @@ create-nuxt-app v3.4.0
 ? Development tools: jsconfig.json (Recommended for VS Code if you're not using typescript)
 ? Continuous integration: None
 ? Version control system: Git
+```
+
+Update dependencies.
+```bash
+$ ncu -u
+ nuxt                    ^2.14.6  →  ^2.14.7   
+ @nuxt/types             ^2.14.6  →  ^2.14.7   
+ @nuxtjs/eslint-module    ^2.0.0  →   ^3.0.0   
+ eslint                  ^7.10.0  →  ^7.11.0   
+ eslint-config-prettier  ^6.12.0  →  ^6.13.0   
+ lint-staged             ^10.4.0  →  ^10.4.2   
 ```
 
 ## Build Setup
