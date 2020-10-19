@@ -23,16 +23,19 @@
         </button>
         <button
           class="m-4 p-2 border-teal-500 hover:bg-teal-500 text-teal-500 hover:text-white font-bold border rounded"
+          @click="filterBy(1)"
         >
           STOCK
         </button>
         <button
           class="m-4 p-2 border-green-500 hover:bg-green-500 text-green-500 hover:text-white font-bold border rounded"
+          @click="filterBy(2)"
         >
           DOING
         </button>
         <button
           class="m-4 p-2 border-gray-500 hover:bg-gray-500 text-gray-500 hover:text-white font-bold border rounded"
+          @click="filterBy(9)"
         >
           DONE
         </button>

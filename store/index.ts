@@ -39,7 +39,14 @@ export const actions = actionTree(
   { state, getters, mutations },
   {
     resetTodoList({ commit }) {
-      commit('setTodoList', [{ task: 'Practice Nuxt', status: '2' }])
+      commit('setTodoList', [
+        { task: 'Practice Nuxt', status: '2' },
+        { task: 'Practice TypeScript', status: '2' },
+        { task: 'Practice Scala', status: '2' },
+        { task: 'Practice Playframework', status: '1' },
+        { task: 'Practice AWS', status: '1' },
+        { task: 'Practice Typing', status: '9' },
+      ])
     },
   }
 )
