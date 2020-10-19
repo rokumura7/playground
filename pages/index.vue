@@ -107,6 +107,11 @@ export default Vue.extend({
       todo.status = elm.selectedOptions[0].value
       this.$accessor.chengeStatus(todo)
     },
+    filterBy(status: string) {
+      this.todoList = this.$accessor.todoList.filter(
+        (t) => t.status === status + ''
+      )
+    },
   },
 })
 </script>
