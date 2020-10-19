@@ -2,14 +2,19 @@
   <div class="h-full w-full flex items-stretch justify-center bg-gray-300">
     <div class="m-4 p-4 w-full rounded bg-white">
       <h1 class="text-lg">TODO</h1>
-      <div class="flex">
-        <input type="text" class="my-4 mr-4 p-2 w-full border rounded" />
+      <form class="flex" @submit="add">
+        <input
+          v-model="task"
+          type="text"
+          class="my-4 mr-4 p-2 w-full border rounded"
+        />
         <button
           class="m-4 p-2 border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white font-bold border rounded"
+          @click="add"
         >
           Add
         </button>
-      </div>
+      </form>
       <div class="flex justify-center">
         <button
           class="m-4 p-2 border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white font-bold border rounded"
@@ -34,31 +39,23 @@
       </div>
       <div>
         <div
+          v-for="(todo, index) in todoList"
+          :key="index"
           class="flex mb-2 p-2 border border-opacity-0 hover:border-opacity-50 border-blue-500 item-center"
         >
-          <p class="mr-4 p-2 w-full">hogehoge</p>
-          <select class="mr-4 p-2">
-            <option>STOCK</option>
-            <option selected>DOING</option>
-            <option>DONE</option>
+          <p class="mr-4 p-2 w-full">{{ todo.task }}</p>
+          <select class="mr-4 p-2" @change="change(todo)">
+            <option
+              v-for="(opt, _index) in options"
+              :key="_index"
+              :value="opt.status"
+            >
+              {{ opt.label }}
+            </option>
           </select>
           <button
             class="p-2 border-red-500 hover:bg-red-500 text-red-500 hover:text-white font-bold border rounded"
-          >
-            REMOVE
-          </button>
-        </div>
-        <div
-          class="flex mb-2 p-2 border border-opacity-0 hover:border-opacity-50 border-blue-500 item-center"
-        >
-          <p class="mr-4 p-2 w-full">fugafuga</p>
-          <select class="mr-4 p-2">
-            <option>STOCK</option>
-            <option>DOING</option>
-            <option selected>DONE</option>
-          </select>
-          <button
-            class="p-2 border-red-500 hover:bg-red-500 text-red-500 hover:text-white font-bold border rounded"
+            @click="remove(todo)"
           >
             REMOVE
           </button>
@@ -74,22 +71,42 @@ import { Todo } from '../store'
 
 export type DataType = {
   todoList: Todo[]
+  task: string
+  options: { [key: string]: string | number }[]
 }
 
 export default Vue.extend({
   data(): DataType {
     return {
       todoList: [],
+      task: '',
+      options: [
+        { label: 'STOCK', status: 1 },
+        { label: 'DOING', status: 2 },
+        { label: 'DONE', status: 9 },
+      ],
     }
   },
   created() {
+    this.$accessor.resetTodoList()
     this.todoList = this.$accessor.todoList
+  },
+  methods: {
+    add(e: Event) {
+      e.preventDefault()
+      if (this.task !== '') {
+        this.$accessor.addTodoList({ task: this.task, status: 1 })
+        this.task = ''
+      }
+    },
+    remove(todo: Todo) {
+      this.$accessor.removeFromTodoList(todo)
+      this.todoList = this.$accessor.todoList
+    },
+    change(todo: Todo, status: number) {
+      console.log(todo)
+      console.log(status)
+    },
   },
 })
 </script>
-
-<style>
-.container {
-  background-color: aqua;
-}
-</style>

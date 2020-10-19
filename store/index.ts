@@ -19,8 +19,19 @@ export const mutations = mutationTree(state, {
   setTodoList(state, newTodoList: Todo[]) {
     state.todoList = newTodoList
   },
-  addTodoList(state, newValue: Todo) {
-    state.todoList.push(newValue)
+  addTodoList(state, newTodo: Todo) {
+    state.todoList.push(newTodo)
+  },
+  removeFromTodoList(state, removeTodo: Todo) {
+    state.todoList = state.todoList.filter((todo) => todo !== removeTodo)
+  },
+  chengeStatus(state, todo: Todo) {
+    state.todoList = state.todoList.map((t) => {
+      if (t === todo) {
+        t.status = todo.status
+      }
+      return t
+    })
   },
 })
 
