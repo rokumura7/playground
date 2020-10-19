@@ -18,6 +18,7 @@
       <div class="flex justify-center">
         <button
           class="m-4 p-2 border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white font-bold border rounded"
+          @click="showAll"
         >
           ALL
         </button>
@@ -92,9 +93,12 @@ export default Vue.extend({
   },
   created() {
     this.$accessor.resetTodoList()
-    this.todoList = this.$accessor.todoList
+    this.showAll()
   },
   methods: {
+    showAll() {
+      this.todoList = this.$accessor.todoList
+    },
     add(evt: Event) {
       evt.preventDefault()
       if (this.task !== '') {
@@ -104,7 +108,7 @@ export default Vue.extend({
     },
     remove(todo: Todo) {
       this.$accessor.removeFromTodoList(todo)
-      this.todoList = this.$accessor.todoList
+      this.showAll()
     },
     update(todo: Todo, elm: HTMLSelectElement) {
       todo.status = elm.selectedOptions[0].value
