@@ -44,7 +44,7 @@
           class="flex mb-2 p-2 border border-opacity-0 hover:border-opacity-50 border-blue-500 item-center"
         >
           <p class="mr-4 p-2 w-full">{{ todo.task }}</p>
-          <select class="mr-4 p-2" @change="change(todo)">
+          <select class="mr-4 p-2" @change="update(todo, $event.target)">
             <option
               v-for="(opt, _index) in options"
               :key="_index"
@@ -72,7 +72,7 @@ import { Todo } from '../store'
 export type DataType = {
   todoList: Todo[]
   task: string
-  options: { [key: string]: string | number }[]
+  options: { [key: string]: string }[]
 }
 
 export default Vue.extend({
@@ -81,9 +81,9 @@ export default Vue.extend({
       todoList: [],
       task: '',
       options: [
-        { label: 'STOCK', status: 1 },
-        { label: 'DOING', status: 2 },
-        { label: 'DONE', status: 9 },
+        { label: 'STOCK', status: '1' },
+        { label: 'DOING', status: '2' },
+        { label: 'DONE', status: '9' },
       ],
     }
   },
@@ -92,10 +92,10 @@ export default Vue.extend({
     this.todoList = this.$accessor.todoList
   },
   methods: {
-    add(e: Event) {
-      e.preventDefault()
+    add(evt: Event) {
+      evt.preventDefault()
       if (this.task !== '') {
-        this.$accessor.addTodoList({ task: this.task, status: 1 })
+        this.$accessor.addTodoList({ task: this.task, status: '1' })
         this.task = ''
       }
     },
@@ -103,9 +103,9 @@ export default Vue.extend({
       this.$accessor.removeFromTodoList(todo)
       this.todoList = this.$accessor.todoList
     },
-    change(todo: Todo, status: number) {
-      console.log(todo)
-      console.log(status)
+    update(todo: Todo, elm: HTMLSelectElement) {
+      todo.status = elm.selectedOptions[0].value
+      this.$accessor.chengeStatus(todo)
     },
   },
 })

@@ -2,7 +2,7 @@ import { getAccessorType, mutationTree, actionTree } from 'nuxt-typed-vuex'
 
 export type Todo = {
   task: string
-  status: number
+  status: string
 }
 
 export const state = () => ({
@@ -39,7 +39,7 @@ export const actions = actionTree(
   { state, getters, mutations },
   {
     resetTodoList({ commit }) {
-      commit('setTodoList', [{ task: 'Practice Nuxt', status: 2 }])
+      commit('setTodoList', [{ task: 'Practice Nuxt', status: '2' }])
     },
   }
 )
