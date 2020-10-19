@@ -48,6 +48,7 @@
           class="flex mb-2 p-2 border border-opacity-0 hover:border-opacity-50 border-blue-500 item-center"
         >
           <p class="mr-4 p-2 w-full">{{ todo.task }}</p>
+          <!-- TODO: todo.statusの値でoptionの初期値を動的に設定したい -->
           <select class="mr-4 p-2" @change="update(todo, $event.target)">
             <option
               v-for="(opt, _index) in options"
