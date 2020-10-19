@@ -70,8 +70,22 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { Todo } from '../store'
 
-export default Vue.extend({})
+export type DataType = {
+  todoList: Todo[]
+}
+
+export default Vue.extend({
+  data(): DataType {
+    return {
+      todoList: [],
+    }
+  },
+  created() {
+    this.todoList = this.$accessor.todoList
+  },
+})
 </script>
 
 <style>
