@@ -48,8 +48,11 @@
           class="flex mb-2 p-2 border border-opacity-0 hover:border-opacity-50 border-blue-500 item-center"
         >
           <p class="mr-4 p-2 w-full">{{ todo.task }}</p>
-          <!-- TODO: todo.statusの値でoptionの初期値を動的に設定したい -->
-          <select class="mr-4 p-2" @change="update(todo, $event.target)">
+          <select
+            class="mr-4 p-2"
+            :value="todo.status"
+            @change="update(index, $event.target)"
+          >
             <option
               v-for="(opt, _index) in options"
               :key="_index"
@@ -60,7 +63,7 @@
           </select>
           <button
             class="p-2 border-red-500 hover:bg-red-500 text-red-500 hover:text-white font-bold border rounded"
-            @click="remove(todo)"
+            @click="remove(index)"
           >
             REMOVE
           </button>
@@ -98,27 +101,30 @@ export default Vue.extend({
   },
   methods: {
     showAll() {
-      this.todoList = this.$accessor.todoList
+      this.todoList = [...this.$accessor.todoList]
     },
     add(evt: Event) {
       evt.preventDefault()
       if (this.task !== '') {
-        this.$accessor.addTodoList({ task: this.task, status: '1' })
+        const todo = { task: this.task, status: '1' }
+        this.$accessor.addTodoList(todo)
+        this.todoList.push(todo)
         this.task = ''
       }
     },
-    remove(todo: Todo) {
+    remove(index: number) {
+      const todo = this.todoList[index]
       this.$accessor.removeFromTodoList(todo)
-      this.showAll()
+      this.todoList.splice(index, 1)
     },
-    update(todo: Todo, elm: HTMLSelectElement) {
-      todo.status = elm.selectedOptions[0].value
+    update(index: number, elm: HTMLSelectElement) {
+      const status = elm.selectedOptions[0].value
+      const todo = this.todoList[index]
+      todo.status = status
       this.$accessor.chengeStatus(todo)
     },
     filterBy(status: string) {
-      this.todoList = this.$accessor.todoList.filter(
-        (t) => t.status === status + ''
-      )
+      this.todoList = this.todoList.filter((t) => t.status === status + '')
     },
   },
 })

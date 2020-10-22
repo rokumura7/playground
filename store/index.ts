@@ -27,7 +27,7 @@ export const mutations = mutationTree(state, {
   },
   chengeStatus(state, todo: Todo) {
     state.todoList = state.todoList.map((t) => {
-      if (t === todo) {
+      if (t.task === todo.task) {
         t.status = todo.status
       }
       return t
