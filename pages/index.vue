@@ -8,38 +8,13 @@
           type="text"
           class="my-4 mr-4 p-2 w-full border rounded"
         />
-        <button
-          class="m-4 p-2 border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white font-bold border rounded"
-          @click="add"
-        >
-          Add
-        </button>
+        <MyButton label="add" color="primary" :bordered="true" @click="add" />
       </form>
       <div class="flex justify-center">
-        <button
-          class="m-4 p-2 border-blue-500 hover:bg-blue-500 text-blue-500 hover:text-white font-bold border rounded"
-          @click="showAll"
-        >
-          ALL
-        </button>
-        <button
-          class="m-4 p-2 border-teal-500 hover:bg-teal-500 text-teal-500 hover:text-white font-bold border rounded"
-          @click="filterBy(1)"
-        >
-          STOCK
-        </button>
-        <button
-          class="m-4 p-2 border-green-500 hover:bg-green-500 text-green-500 hover:text-white font-bold border rounded"
-          @click="filterBy(2)"
-        >
-          DOING
-        </button>
-        <button
-          class="m-4 p-2 border-gray-500 hover:bg-gray-500 text-gray-500 hover:text-white font-bold border rounded"
-          @click="filterBy(9)"
-        >
-          DONE
-        </button>
+        <MyButton label="all" @click="showAll" />
+        <MyButton label="stock" color="primary" @click="filterBy(1)" />
+        <MyButton label="doing" color="success" @click="filterBy(2)" />
+        <MyButton label="done" color="warning" @click="filterBy(9)" />
       </div>
       <div>
         <div
@@ -61,12 +36,12 @@
               {{ opt.label }}
             </option>
           </select>
-          <button
-            class="p-2 border-red-500 hover:bg-red-500 text-red-500 hover:text-white font-bold border rounded"
+          <MyButton
+            label="remove"
+            color="danger"
+            :bordered="true"
             @click="remove(index)"
-          >
-            REMOVE
-          </button>
+          />
         </div>
       </div>
     </div>
@@ -76,6 +51,7 @@
 <script lang="ts">
 import Vue from 'vue'
 import { Todo } from '../store'
+import MyButton from '../components/atoms/MyButton.vue'
 
 export type DataType = {
   todoList: Todo[]
@@ -84,6 +60,9 @@ export type DataType = {
 }
 
 export default Vue.extend({
+  components: {
+    MyButton,
+  },
   data(): DataType {
     return {
       todoList: [],
@@ -124,7 +103,9 @@ export default Vue.extend({
       this.$accessor.chengeStatus(todo)
     },
     filterBy(status: string) {
-      this.todoList = this.todoList.filter((t) => t.status === status + '')
+      this.todoList = [...this.$accessor.todoList].filter(
+        (t) => t.status === status + ''
+      )
     },
   },
 })
