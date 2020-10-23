@@ -42,7 +42,7 @@ const colors = {
     border: 'border-red-600',
   },
   default: {
-    text: 'text-default-600',
+    text: 'text-gray-600',
     bg: 'bg-gray-500',
     bgHover: 'hover:bg-gray-600',
     border: 'border-gray-600',
