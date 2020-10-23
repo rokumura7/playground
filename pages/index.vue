@@ -3,11 +3,7 @@
     <div class="m-4 p-4 w-full rounded bg-white">
       <h1 class="text-lg">TODO</h1>
       <form class="flex" @submit="add">
-        <input
-          v-model="task"
-          type="text"
-          class="my-4 mr-4 p-2 w-full border rounded"
-        />
+        <MyInput :value="task" :type="text" :is-full-width="true" />
         <MyButton label="add" color="primary" :bordered="true" @click="add" />
       </form>
       <div class="flex justify-center">
@@ -45,6 +41,7 @@ import Vue from 'vue'
 import { Todo } from '../store'
 import MyButton from '../components/atoms/MyButton.vue'
 import MySelect from '../components/atoms/MySelect.vue'
+import MyInput from '../components/atoms/MyInput.vue'
 
 export type DataType = {
   todoList: Todo[]
@@ -56,6 +53,7 @@ export default Vue.extend({
   components: {
     MyButton,
     MySelect,
+    MyInput,
   },
   data(): DataType {
     return {
@@ -77,6 +75,7 @@ export default Vue.extend({
       this.todoList = [...this.$accessor.todoList]
     },
     add(evt: Event) {
+      console.log(this.task)
       evt.preventDefault()
       if (this.task !== '') {
         const todo = { task: this.task, status: '1' }
