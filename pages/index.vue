@@ -3,7 +3,7 @@
     <div class="m-4 p-4 w-full rounded bg-white">
       <h1 class="text-lg">TODO</h1>
       <form class="flex" @submit="add">
-        <MyInput v-model="task" :type="text" :is-full-width="true" />
+        <MyInput v-model="task" type="text" :is-full-width="true" />
         <MyButton label="add" color="primary" :bordered="true" @click="add" />
       </form>
       <div class="flex justify-center">

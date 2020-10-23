@@ -1,6 +1,5 @@
 <template>
   <input
-    type="type"
     class="my-4 mr-4 p-2 border rounded"
     :value="task"
     :class="[fullWidth]"
@@ -9,9 +8,7 @@
 </template>
 
 <script lang="ts">
-import Vue, { PropOptions } from 'vue'
-
-type InputType = 'text' | 'password' | 'number'
+import Vue from 'vue'
 
 export default Vue.extend({
   name: 'MyInput',
@@ -21,10 +18,6 @@ export default Vue.extend({
       required: false,
       default: '',
     },
-    type: {
-      type: String,
-      required: true,
-    } as PropOptions<InputType>,
     isFullWidth: {
       type: Boolean,
       required: false,

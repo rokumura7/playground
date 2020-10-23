@@ -9,22 +9,18 @@
 <script lang="ts">
 import Vue from 'vue'
 
-type Option = {
-  status: number
-  label: string
-}
-
 export default Vue.extend({
   name: 'MySelect',
   props: {
     options: {
-      type: [Option],
+      type: Array,
       required: true,
+      default: () => {},
     },
     status: {
-      type: Number,
+      type: String,
       required: false,
-      default: 1,
+      default: '1',
     },
   },
   methods: {
