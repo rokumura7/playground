@@ -3,7 +3,7 @@
     <div class="m-4 p-4 w-full rounded bg-white">
       <h1 class="text-lg">TODO</h1>
       <form class="flex" @submit="add">
-        <MyInput :value="task" :type="text" :is-full-width="true" />
+        <MyInput v-model="task" :type="text" :is-full-width="true" />
         <MyButton label="add" color="primary" :bordered="true" @click="add" />
       </form>
       <div class="flex justify-center">
@@ -75,7 +75,6 @@ export default Vue.extend({
       this.todoList = [...this.$accessor.todoList]
     },
     add(evt: Event) {
-      console.log(this.task)
       evt.preventDefault()
       if (this.task !== '') {
         const todo = { task: this.task, status: '1' }

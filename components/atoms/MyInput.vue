@@ -4,7 +4,7 @@
     class="my-4 mr-4 p-2 border rounded"
     :value="task"
     :class="[fullWidth]"
-    @change="onInput"
+    @change="$emit('input', $event.target.value)"
   />
 </template>
 
@@ -34,14 +34,6 @@ export default Vue.extend({
   computed: {
     fullWidth(): String {
       return this.isFullWidth ? 'w-full' : ''
-    },
-  },
-  methods: {
-    onInput($event: Event) {
-      this.$emit('input', ($event.target as HTMLInputElement).value)
-    },
-    commitChange(val: string) {
-      this.$emit('input', val)
     },
   },
 })
