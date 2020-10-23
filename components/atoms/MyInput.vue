@@ -1,6 +1,6 @@
 <template>
   <input
-    class="my-4 mr-4 p-2 border rounded"
+    class="px-2 border rounded"
     :value="task"
     :class="[fullWidth]"
     @change="$emit('input', $event.target.value)"
