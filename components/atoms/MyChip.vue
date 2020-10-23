@@ -14,7 +14,7 @@ import Colors from '../../mixins/Colors'
 type Color = 'default' | 'primary' | 'success' | 'warning' | 'danger'
 
 export default Vue.extend({
-  name: 'Chip',
+  name: 'MyChip',
   props: {
     label: {
       type: String,
