@@ -37,4 +37,7 @@ export default {
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
+
+  // Storybook https://storybook.nuxtjs.org/setup
+  storybook: {},
 }
