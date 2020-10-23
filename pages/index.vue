@@ -23,19 +23,11 @@
           class="flex mb-2 p-2 border border-opacity-0 hover:border-opacity-50 border-blue-500 item-center"
         >
           <p class="mr-4 p-2 w-full">{{ todo.task }}</p>
-          <select
-            class="mr-4 p-2"
-            :value="todo.status"
+          <MySelect
+            :options="options"
+            :status="todo.status"
             @change="update(index, $event.target)"
-          >
-            <option
-              v-for="(opt, _index) in options"
-              :key="_index"
-              :value="opt.status"
-            >
-              {{ opt.label }}
-            </option>
-          </select>
+          />
           <MyButton
             label="remove"
             color="danger"
@@ -52,6 +44,7 @@
 import Vue from 'vue'
 import { Todo } from '../store'
 import MyButton from '../components/atoms/MyButton.vue'
+import MySelect from '../components/atoms/MySelect.vue'
 
 export type DataType = {
   todoList: Todo[]
@@ -62,6 +55,7 @@ export type DataType = {
 export default Vue.extend({
   components: {
     MyButton,
+    MySelect,
   },
   data(): DataType {
     return {
