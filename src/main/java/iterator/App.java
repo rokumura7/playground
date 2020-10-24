@@ -2,7 +2,7 @@ package iterator;
 
 public class App {
   public static void main(String[] args) {
-    BookShelf bookShelf = new BookShelf(4);
+    BookShelf bookShelf = new BookShelf();
     bookShelf.appendBook(new Book("書籍A"));
     bookShelf.appendBook(new Book("書籍B"));
     bookShelf.appendBook(new Book("書籍C"));
