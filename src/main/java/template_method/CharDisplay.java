@@ -6,17 +6,17 @@ public class CharDisplay extends AbstractDisplay {
     this.ch = ch;
   }
   @Override
-  public void open() {
+  protected void open() {
     System.out.print("<<");
   }
 
   @Override
-  public void print() {
+  protected void print() {
     System.out.print(ch);
   }
 
   @Override
-  public void close() {
+  protected void close() {
     System.out.print(">>");
   }
 }
