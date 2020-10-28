@@ -3,22 +3,23 @@ package factory_method.idcard;
 import factory_method.framework.Factory;
 import factory_method.framework.Product;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class IDCardFactory extends Factory {
-  private List<Product> owners = new ArrayList<>();
+  private Map<Integer, String> database = new HashMap<>();
+  private int serial = 100;
   @Override
-  protected Product createProduct(String string) {
-    return new IDCard(string);
+  protected synchronized Product createProduct(String string) {
+    return new IDCard(string, serial++);
   }
 
   @Override
   protected void registerProduct(Product product) {
-    owners.add(product);
+    IDCard card = (IDCard) product;
+    database.put(card.getSerial(), card.getOwner());
   }
 
-  public List getOwners() {
-    return owners;
+  public Map<Integer, String> getDatabase() {
+    return database;
   }
 }
