@@ -1,7 +1,7 @@
 package builder;
 
-public class TextBuilder extends Builder {
-  private StringBuffer buffer = new StringBuffer();
+public class TextBuilder implements Builder {
+  private final StringBuffer buffer = new StringBuffer();
 
   @Override
   public void makeTitle(String title) {

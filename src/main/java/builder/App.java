@@ -12,6 +12,6 @@ public class App {
   private static String test(Builder builder) {
     Director director = new Director(builder);
     director.construct();
-    return builder.getResult();
+    return director.getResult();
   }
 }

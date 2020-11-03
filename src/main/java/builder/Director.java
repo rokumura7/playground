@@ -20,4 +20,8 @@ public class Director {
     });
     builder.close();
   }
+
+  public String getResult() {
+    return builder.getResult();
+  }
 }
