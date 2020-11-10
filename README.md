@@ -10,3 +10,4 @@
 - [Abstract Factory](./src/main/java/abstract_factory/README.md)
 - [Bridge](./src/main/java/bridge/README.md)
 - [Strategy](./src/main/java/strategy/README.md)
+- [Composite](./src/main/java/composite/README.md)
