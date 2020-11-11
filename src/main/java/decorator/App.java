@@ -20,5 +20,8 @@ public class App {
             ), '/'
     );
     d4.show();
+
+    Display d5 = new UpDownBorder(d2);
+    d5.show();
   }
 }
