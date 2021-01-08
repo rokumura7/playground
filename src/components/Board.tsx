@@ -1,16 +1,12 @@
 import React from 'react'
 import Square from 'components/Square'
 
-type BoardState = {
-  squares: string[]
-  xIsNext: boolean
-}
 type BoardProps = {
   squares: string[]
   onClick: (i: number) => void
 }
 
-class Board extends React.Component<BoardProps, BoardState> {
+class Board extends React.Component<BoardProps> {
   renderSquare = (i: number) => (
     <Square
       value={this.props.squares[i]}
@@ -18,27 +14,25 @@ class Board extends React.Component<BoardProps, BoardState> {
     />
   )
 
-  render() {
-    return (
-      <div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
+  render = () => (
+    <div>
+      <div className="board-row">
+        {this.renderSquare(0)}
+        {this.renderSquare(1)}
+        {this.renderSquare(2)}
       </div>
-    )
-  }
+      <div className="board-row">
+        {this.renderSquare(3)}
+        {this.renderSquare(4)}
+        {this.renderSquare(5)}
+      </div>
+      <div className="board-row">
+        {this.renderSquare(6)}
+        {this.renderSquare(7)}
+        {this.renderSquare(8)}
+      </div>
+    </div>
+  )
 }
 
 export default Board

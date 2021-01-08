@@ -38,12 +38,21 @@ class Game extends React.Component<GameProps, GameState> {
     })
   }
 
-  jumpTo(step: number) {
+  jumpTo = (step: number) =>
     this.setState({
       stepNumber: step,
       xIsNext: step % 2 === 0,
     })
-  }
+
+  moves = (history: { squares: string[] }[]) =>
+    history.map((_step, move) => {
+      const desc = move ? 'Go to move #' + move : 'Go to game start'
+      return (
+        <li key={move}>
+          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        </li>
+      )
+    })
 
   render = () => {
     const history = this.state.history
@@ -52,14 +61,6 @@ class Game extends React.Component<GameProps, GameState> {
     const status = winner
       ? 'Winner: ' + winner
       : 'Next Player: ' + (this.state.xIsNext ? 'X' : 'O')
-    const moves = history.map((_step, move) => {
-      const desc = move ? 'Go to move #' + move : 'Go to game start'
-      return (
-        <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
-      )
-    })
     return (
       <div className="game">
         <div className="game-board">
@@ -70,7 +71,7 @@ class Game extends React.Component<GameProps, GameState> {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <ol>{this.moves(history)}</ol>
         </div>
       </div>
     )
