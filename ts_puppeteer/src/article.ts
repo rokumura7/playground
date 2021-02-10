@@ -1,0 +1,9 @@
+export default class Article {
+  title: string | null
+  likeCount: number
+
+  constructor(title: string | null, likeCount: string | null) {
+    this.title = title
+    this.likeCount = Number(likeCount)
+  }
+}
