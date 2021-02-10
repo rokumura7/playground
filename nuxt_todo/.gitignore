@@ -1,0 +1,15 @@
+# Dependency directories
+node_modules/
+
+# nuxt.js build output
+.nuxt
+
+# storybook
+.nuxt-storybook
+storybook-static
+
+# Service worker
+sw.*
+
+# macOS
+**.DS_Store
