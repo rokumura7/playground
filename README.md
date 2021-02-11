@@ -5,18 +5,18 @@
 
 ## ts_tutorial
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rokumura7/playground/ts_tutorial_ci)
+![ts_tutorial_ci](https://github.com/rokumura7/playground/workflows/ts_tutorial_ci/badge.svg)
 ![dependencies](https://david-dm.org/rokumura7/playground.svg?path=ts_tutorial)
 ![devDependencies](https://david-dm.org/rokumura7/playground/dev-status.svg?path=ts_tutorial)
 
 ## ts_puppeteer
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rokumura7/playground/ts_puppeteer_ci)
+![ts_puppeteer_ci](https://github.com/rokumura7/playground/workflows/ts_puppeteer_ci/badge.svg)
 ![dependencies](https://david-dm.org/rokumura7/playground.svg?path=ts_puppeteer)
 ![devDependencies](https://david-dm.org/rokumura7/playground/dev-status.svg?path=ts_puppeteer)
 
 ## tic_tac_toe
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/rokumura7/playground/tic_tac_toe_ci)
+![tic_tac_toe_ci](https://github.com/rokumura7/playground/workflows/tic_tac_toe_ci/badge.svg)
 ![dependencies](https://david-dm.org/rokumura7/playground.svg?path=tic_tac_toe)
 ![devDependencies](https://david-dm.org/rokumura7/playground/dev-status.svg?path=tic_tac_toe)
