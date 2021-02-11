@@ -6,13 +6,13 @@
   "scripts": {
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint 'src/**/*.ts'" 
+    "lint": "eslint 'src/**/*.ts'"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/puppeteer": "^5.4.3",
-    "puppeteer": "^7.0.4"
+    "puppeteer": "^6.0.0"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.15.0",
