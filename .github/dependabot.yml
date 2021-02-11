@@ -1,0 +1,73 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/ts_tutorial"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+    reviewers:
+      - "rokumura7"
+
+  - package-ecosystem: "npm"
+    directory: "/ts_puppeteer"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+    reviewers:
+      - "rokumura7"
+
+  - package-ecosystem: "npm"
+    directory: "/tic_tac_toe"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+    reviewers:
+      - "rokumura7"
+
+  - package-ecosystem: "npm"
+    directory: "/nuxt_todo"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+    reviewers:
+      - "rokumura7"
+
+  - package-ecosystem: "npm"
+    directory: "/js_pdfreader"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+    reviewers:
+      - "rokumura7"
+
+  - package-ecosystem: "maven"
+    directory: "/java_oop"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+    reviewers:
+      - "rokumura7"
+
+  - package-ecosystem: "maven"
+    directory: "/java_oop_old_maid"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+    reviewers:
+      - "rokumura7"
+
+  - package-ecosystem: "maven"
+    directory: "/java_oop_cards"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+    reviewers:
+      - "rokumura7"
+
+  - package-ecosystem: "gradle"
+    directory: "/java_design_pattern"
+    schedule:
+      interval: "weekly"
+      day: "friday"
+    reviewers:
+      - "rokumura7"
