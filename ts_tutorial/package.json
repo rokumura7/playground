@@ -1,0 +1,19 @@
+{
+  "name": "ts_tutorial",
+  "version": "1.0.0",
+  "description": "TypeScript basic",
+  "main": "index.ts",
+  "scripts": {
+    "start": "npm run build:live",
+    "build": "tsc -p .",
+    "build:live": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts"
+  },
+  "author": "rokumura7",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^14.14.25",
+    "nodemon": "^2.0.7",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.5"
+  }
+}
