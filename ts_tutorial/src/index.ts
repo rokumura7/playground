@@ -1,23 +1,23 @@
 class Student {
-  fullName: string
+  fullName: string;
   constructor(
     public firstName: string,
     public middleInitial: string,
     public lastName: string
   ) {
-    this.fullName = firstName + " " + middleInitial + " " + lastName
+    this.fullName = firstName + ' ' + middleInitial + ' ' + lastName;
   }
 }
 
 interface Person {
-  firstName: string,
-  lastName: string
+  firstName: string;
+  lastName: string;
 }
 
 function greeter(person: Person) {
-  return "Hello, " + person.firstName + " " + person.lastName
+  return 'Hello, ' + person.firstName + ' ' + person.lastName;
 }
 
-const user = new Student("Jane", "M", "User")
+const user = new Student('Jane', 'M', 'User');
 
-console.log(greeter(user))
+console.log(greeter(user));
