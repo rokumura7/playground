@@ -20,3 +20,9 @@
 ![tic_tac_toe_ci](https://github.com/rokumura7/playground/workflows/tic_tac_toe_ci/badge.svg)
 ![dependencies](https://david-dm.org/rokumura7/playground.svg?path=tic_tac_toe)
 ![devDependencies](https://david-dm.org/rokumura7/playground/dev-status.svg?path=tic_tac_toe)
+
+## nuxt_todo
+
+![tic_tac_toe_ci](https://github.com/rokumura7/playground/workflows/nuxt_todo_ci/badge.svg)
+![dependencies](https://david-dm.org/rokumura7/playground.svg?path=nuxt_todo)
+![devDependencies](https://david-dm.org/rokumura7/playground/dev-status.svg?path=nuxt_todo)
