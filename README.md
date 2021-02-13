@@ -26,3 +26,7 @@
 ![nuxt_todo_ci](https://github.com/rokumura7/playground/workflows/nuxt_todo_ci/badge.svg)
 ![dependencies](https://david-dm.org/rokumura7/playground.svg?path=nuxt_todo)
 ![devDependencies](https://david-dm.org/rokumura7/playground/dev-status.svg?path=nuxt_todo)
+
+## java_oop
+
+![java_oop_ci](https://github.com/rokumura7/playground/workflows/java_oop_ci/badge.svg)
