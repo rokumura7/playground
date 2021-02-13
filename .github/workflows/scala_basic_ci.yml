@@ -1,0 +1,31 @@
+name: scala_basic_ci
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+defaults:
+  run:
+    working-directory: ./scala_basic
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Cache SBT cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.ivy2/cache
+          key: ${{ runner.os }}-sbt-ivy-cache-${{ hashFiles('**/build.sbt') }}
+          restore-keys: ${{ runner.os }}-sbt
+      - name: Build with SBT
+        run: sbt compile
+      - name: Run tests with SBT
+        run: sbt test

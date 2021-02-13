@@ -34,3 +34,7 @@
 ## sbt_tutorial
 
 ![sbt_tutorial_ci](https://github.com/rokumura7/playground/workflows/sbt_tutorial_ci/badge.svg)
+
+## scala_basic
+
+![scala_basic_ci](https://github.com/rokumura7/playground/workflows/scala_basic_ci/badge.svg)
