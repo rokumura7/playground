@@ -3,3 +3,6 @@
 .settings/
 .DS_Store
 target/
+
+.idea
+java_oop.iml

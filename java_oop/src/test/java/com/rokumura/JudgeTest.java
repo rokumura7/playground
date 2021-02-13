@@ -1,10 +1,7 @@
 package com.rokumura;
 
-import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
-import static org.assertj.core.api.Assertions.*;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.junit.*;
@@ -24,13 +21,13 @@ public class JudgeTest {
     players.add(p3);
     players.add(p4);
 
-    players.stream().forEach(p -> p.decideHand());
+    players.forEach(Player::decideHand);
 
     Judge judge = new Judge();
     Method judgeJanken = Judge.class.getDeclaredMethod("judgeJanken", List.class);
     judgeJanken.setAccessible(true);
 
-    assertEquals("winner is p1", Arrays.asList(p1), judgeJanken.invoke(judge, players));
+    assertEquals("winner is p1", Collections.singletonList(p1), judgeJanken.invoke(judge, players));
   }
 
   @Test

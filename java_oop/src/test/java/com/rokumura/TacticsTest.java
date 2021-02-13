@@ -1,8 +1,6 @@
 package com.rokumura;
 
-import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
-import static org.assertj.core.api.Assertions.*;
 
 import org.junit.*;
 
