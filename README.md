@@ -31,6 +31,10 @@
 
 ![java_oop_ci](https://github.com/rokumura7/playground/workflows/java_oop_ci/badge.svg)
 
+## java_design_pattern
+
+![java_design_pattern_ci](https://github.com/rokumura7/playground/workflows/java_design_pattern_ci/badge.svg)
+
 ## sbt_tutorial
 
 ![sbt_tutorial_ci](https://github.com/rokumura7/playground/workflows/sbt_tutorial_ci/badge.svg)
