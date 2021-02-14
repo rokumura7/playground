@@ -1,11 +1,17 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-    <router-link to="/signup">Signup</router-link>
-  </div>
+  <Nav />
   <router-view />
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue'
+import Nav from '@/components/Nav.vue'
+
+export default defineComponent({
+  name: 'App',
+  components: { Nav },
+})
+</script>
 
 <style>
 #app {
