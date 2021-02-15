@@ -4,16 +4,24 @@
       <CardHeader label="SIGN UP" />
       <form class="p-5 space-y-5">
         <div>
-          <MyInput placeholder="user name" />
+          <MyInput placeholder="user name" @change-value="changeUserName" />
         </div>
         <div>
-          <MyInput type="email" placeholder="email" />
+          <MyInput
+            type="email"
+            placeholder="email"
+            @change-value="changeEmail"
+          />
         </div>
         <div>
-          <MyInput type="password" placeholder="password" />
+          <MyInput
+            type="password"
+            placeholder="password"
+            @change-value="changePassword"
+          />
         </div>
         <div class="text-right">
-          <MyButton label="SIGN UP" />
+          <MyButton label="SIGN UP" @click="signup" />
         </div>
         <div class="text-right border-t pt-5">
           <router-link to="/"><MyButton label="SIGN IN" /></router-link>
@@ -24,11 +32,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, reactive } from 'vue'
 import { MyButton, MyInput, CardHeader } from '@/components/atoms'
 
 export default defineComponent({
   name: 'Signup',
   components: { MyButton, MyInput, CardHeader },
+  setup() {
+    const state = reactive({
+      userName: '',
+      email: '',
+      password: '',
+    })
+
+    const changeUserName = (userName: string) => (state.userName = userName)
+    const changeEmail = (email: string) => (state.email = email)
+    const changePassword = (password: string) => (state.password = password)
+
+    const signup = () => {
+      console.log(state)
+    }
+    return {
+      state,
+      changeUserName,
+      changeEmail,
+      changePassword,
+      signup,
+    }
+  },
 })
 </script>
