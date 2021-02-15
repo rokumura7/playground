@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Log;
 
 class UserController extends Controller
 {
@@ -33,8 +34,9 @@ class UserController extends Controller
     }
     
     public function store(Request $request) {
+        Log::info($request);
         $user = new User();
-        $user->name = $request->name;
+        $user->name = $request->userName;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->save();

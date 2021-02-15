@@ -1,12 +1,9 @@
 import axios, { AxiosResponse } from 'axios'
 
-type Method = 'GET' | 'POST' | 'PUT' | 'DELETE'
-
 const client = axios.create({
-  baseURL: 'http://127.0.0.1:8000/api/v1',
+  baseURL: '/api/v1',
 })
 client.interceptors.request.use((config) => {
-  config.headers['X-CSRF-TOKEN'] = window.Laravel.csrfToken
   config.headers['X-Requested-With'] = 'XMLHttpRequest'
   config.headers['Authorization'] = `Bearer ${localStorage.getItem(
     'jwt-token'

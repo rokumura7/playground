@@ -34,6 +34,7 @@
 <script lang="ts">
 import { defineComponent, reactive } from 'vue'
 import { MyButton, MyInput, CardHeader } from '@/components/atoms'
+import { post } from '@/helpers/Http'
 
 export default defineComponent({
   name: 'Signup',
@@ -51,6 +52,7 @@ export default defineComponent({
 
     const signup = () => {
       console.log(state)
+      post('signUp', state)
     }
     return {
       state,
