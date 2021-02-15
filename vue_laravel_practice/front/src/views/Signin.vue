@@ -1,11 +1,7 @@
 <template>
   <div class="h-full flex justify-center items-center">
     <div class="border rounded">
-      <h2
-        class="font-bold text-white bg-gradient-to-r from-green-400 to-blue-500 text-center px-20 py-5"
-      >
-        Vue Laravel Practice
-      </h2>
+      <CardHeader label="SIGN IN" />
       <form class="p-5 space-y-5">
         <div>
           <MyInput type="email" placeholder="email" />
@@ -26,10 +22,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import { MyButton, MyInput } from '@/components/atoms'
+import { MyButton, MyInput, CardHeader } from '@/components/atoms'
 
 export default defineComponent({
   name: 'Signin',
-  components: { MyButton, MyInput },
+  components: { MyButton, MyInput, CardHeader },
 })
 </script>
