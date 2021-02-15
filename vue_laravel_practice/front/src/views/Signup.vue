@@ -8,41 +8,19 @@
       </h2>
       <form class="p-5 space-y-5">
         <div>
-          <input
-            class="px-2 w-full rounded border border-blue-100 border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            type="text"
-            placeholder="user name"
-          />
+          <MyInput placeholder="user name" />
         </div>
         <div>
-          <input
-            class="px-2 w-full rounded border border-blue-100 border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            type="email"
-            placeholder="email"
-          />
+          <MyInput type="email" placeholder="email" />
         </div>
         <div>
-          <input
-            class="px-2 w-full rounded border border-blue-100 border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            type="password"
-            placeholder="password"
-          />
+          <MyInput type="password" placeholder="password" />
         </div>
         <div class="text-right">
-          <button
-            class="px-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-          >
-            SIGN UP
-          </button>
+          <MyButton label="SIGN UP" />
         </div>
         <div class="text-right border-t pt-5">
-          <router-link to="/"
-            ><button
-              class="px-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-            >
-              SIGN IN
-            </button>
-          </router-link>
+          <router-link to="/"><MyButton label="SIGN IN" /></router-link>
         </div>
       </form>
     </div>
@@ -51,8 +29,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { MyButton, MyInput } from '@/components/atoms'
 
 export default defineComponent({
   name: 'Signup',
+  components: { MyButton, MyInput },
 })
 </script>
