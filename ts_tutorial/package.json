@@ -12,7 +12,7 @@
   "author": "rokumura7",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^14.14.26",
+    "@types/node": "^14.14.30",
     "@typescript-eslint/eslint-plugin": "^4.15.1",
     "@typescript-eslint/parser": "^4.15.0",
     "eslint": "^7.19.0",
