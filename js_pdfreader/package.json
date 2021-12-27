@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",
-    "pdfreader": "^1.2.8"
+    "pdfreader": "^1.2.14"
   }
 }
