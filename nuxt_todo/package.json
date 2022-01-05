@@ -40,7 +40,7 @@
     "eslint-plugin-prettier": "^3.3.1",
     "husky": "^7.0.4",
     "lint-staged": "^10.5.4",
-    "nuxt-typed-vuex": "^0.1.22",
+    "nuxt-typed-vuex": "^0.2.0",
     "prettier": "^2.5.1"
   }
 }
