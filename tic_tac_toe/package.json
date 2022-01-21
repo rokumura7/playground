@@ -17,7 +17,7 @@
     "web-vitals": "^1.1.1"
   },
   "devDependencies": {
-    "husky": "^5.2.0",
+    "husky": "^7.0.4",
     "lint-staged": "^10.5.4",
     "prettier": "^2.5.1"
   },
